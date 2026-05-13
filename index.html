@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MADA GLAM | Mode Haute Couture Madagascar</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root{
+  --rose:#B5294E;--rose-light:#F2C4D0;--rose-pale:#FDF0F4;
+  --dark:#0D0A0E;--dark2:#1A1320;
+  --cream:#FAF6F2;--cream2:#F3EDE8;
+  --gold:#C4973A;--gold-light:#F0E0B0;
+  --mid:#7A3D5A;
+  --green:#20B858;--gray:#F5EFF2;
+  --shadow:0 8px 32px rgba(13,10,14,.10);
+  --shadow-sm:0 2px 12px rgba(13,10,14,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--dark);overflow-x:hidden}
+
+/* ── HEADER ── */
+header{
+  background:var(--dark);padding:0 18px;height:60px;
+  position:sticky;top:0;z-index:300;
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  border-bottom:1px solid rgba(196,151,58,.18);
+}
+.logo{
+  font-family:'Playfair Display',serif;color:white;
+  font-size:20px;font-weight:900;letter-spacing:4px;flex-shrink:0;
+}
+.logo em{color:var(--gold);font-style:italic;font-weight:400}
+.header-search{flex:1;max-width:240px;position:relative}
+.header-search input{
+  width:100%;padding:8px 12px 8px 34px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;color:white;font-family:'DM Sans',sans-serif;font-size:13px;outline:none;transition:.25s;
+}
+.header-search input::placeholder{color:rgba(255,255,255,.3)}
+.header-search input:focus{background:rgba(255,255,255,.11);border-color:rgba(196,151,58,.5)}
+.hs-icon{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.35;pointer-events:none}
+.header-actions{display:flex;gap:4px;align-items:center;flex-shrink:0}
+.icon-btn{
+  background:transparent;border:none;color:rgba(255,255,255,.6);cursor:pointer;
+  padding:7px;border-radius:8px;transition:.15s;
+  display:flex;align-items:center;justify-content:center;position:relative;
+}
+.icon-btn:hover{color:white;background:rgba(255,255,255,.08)}
+.ibadge{
+  position:absolute;top:-1px;right:-1px;
+  background:var(--rose);color:white;width:14px;height:14px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;
+}
+.cart-btn{
+  background:linear-gradient(135deg,var(--gold),#E8B84B);color:var(--dark);
+  padding:8px 14px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;
+  font-size:11px;cursor:pointer;display:flex;align-items:center;gap:6px;
+  transition:.2s;letter-spacing:.5px;
+}
+.cart-btn:hover{filter:brightness(1.08)}
+#count{background:var(--dark);color:white;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700}
+
+/* ── PROMO BAR ── */
+.promo-bar{
+  background:linear-gradient(90deg,var(--rose),#9B1F41,var(--rose));
+  background-size:200%;animation:bg-slide 5s linear infinite;
+  color:white;padding:8px;text-align:center;font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;
+}
+@keyframes bg-slide{0%{background-position:0%}100%{background-position:200%}}
+
+/* ── HERO ── */
+.hero{
+  background:var(--dark2);padding:52px 24px 44px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 30% 50%,rgba(181,41,78,.22),transparent 60%),
+             radial-gradient(ellipse at 80% 20%,rgba(196,151,58,.12),transparent 55%);
+}
+.hero::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(196,151,58,.4),transparent);
+}
+.hero-eyebrow{
+  font-size:9px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--gold);font-weight:600;margin-bottom:14px;position:relative;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:24px;height:1px;background:var(--gold);opacity:.5}
+.hero h1{font-family:'Playfair Display',serif;color:white;font-size:48px;font-weight:900;line-height:1.05;position:relative}
+.hero h1 em{color:var(--gold);font-style:italic;font-weight:400;display:block;font-size:52px}
+.hero-sub{color:rgba(255,255,255,.4);font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-top:14px;position:relative}
+
+/* ── FILTER TABS ── */
+.filter-bar{display:flex;gap:6px;padding:18px 16px 0;overflow-x:auto;scrollbar-width:none}
+.filter-bar::-webkit-scrollbar{display:none}
+.ftab{
+  padding:7px 16px;border-radius:8px;border:1px solid #E4D8DE;
+  background:white;font-size:11px;font-weight:600;letter-spacing:.5px;color:#999;
+  cursor:pointer;transition:.2s;white-space:nowrap;font-family:'DM Sans',sans-serif;flex-shrink:0;
+}
+.ftab:hover{border-color:#C8A0B0;color:var(--mid)}
+.ftab.active{background:var(--dark);border-color:var(--dark);color:white}
+
+/* ── SORT BAR ── */
+.sort-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 16px 0}
+.sort-count{font-size:11px;color:#aaa;font-weight:500}
+.sort-select{
+  border:1px solid #E4D8DE;border-radius:8px;padding:5px 9px;
+  font-family:'DM Sans',sans-serif;font-size:11px;color:var(--dark);
+  background:white;cursor:pointer;outline:none;
+}
+
+/* ── SECTION ── */
+.section{padding:16px 14px}
+.section-header{display:flex;align-items:flex-end;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(120,50,80,.08)}
+.section-header h2{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;line-height:1}
+.section-header span{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:600;padding-bottom:4px}
+
+/* ── GRID ── */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+
+/* ── CARD ── */
+.card{
+  background:white;border-radius:14px;overflow:hidden;
+  box-shadow:var(--shadow-sm);transition:.3s ease;cursor:pointer;position:relative;
+  border:1px solid rgba(0,0,0,.04);
+}
+.card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.card:active{transform:scale(0.97)}
+.card-img{position:relative;width:100%;padding-top:125%;overflow:hidden;background:#F0E6EC}
+.card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:.5s ease;display:block}
+.card:hover .card-img img{transform:scale(1.04)}
+.card:active .card-img img{transform:scale(1.05)}
+.card-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(13,10,14,.35) 100%);
+  opacity:0;transition:.3s;pointer-events:none;
+}
+.card:hover .card-img::after{opacity:1}
+
+.wish-btn{
+  position:absolute;top:7px;right:7px;z-index:3;
+  background:rgba(255,255,255,.92);border:none;
+  width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;backdrop-filter:blur(6px);transition:.2s;
+  box-shadow:0 2px 8px rgba(0,0,0,.12);
+}
+.wish-btn svg{width:11px;height:11px;stroke:var(--rose);fill:none;stroke-width:2;transition:.2s}
+.wish-btn.active svg{fill:var(--rose)}
+.wish-btn:active{transform:scale(1.3)}
+.badge-promo{
+  position:absolute;top:7px;left:7px;z-index:2;
+  background:linear-gradient(135deg,var(--rose),#9B1F41);
+  color:white;font-size:7px;font-weight:700;letter-spacing:1px;
+  padding:2px 6px;border-radius:5px;text-transform:uppercase;
+}
+.badge-colors{position:absolute;bottom:9px;right:9px;display:flex;gap:3px;z-index:2}
+.color-dot{width:11px;height:11px;border-radius:50%;border:2px solid white;box-shadow:0 1px 5px rgba(0,0,0,.3)}
+
+.card-body{padding:8px 9px 10px}
+.card-name{font-size:10px;font-weight:400;color:#777;line-height:1.3;height:26px;overflow:hidden;margin-bottom:4px}
+.card-pricing{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.card-price{font-weight:700;color:var(--dark);font-size:12px;letter-spacing:-.2px}
+.card-old{font-size:9px;color:#C0B0B5;text-decoration:line-through}
+.card-promo-price{color:var(--rose)}
+
+/* ── TOAST ── */
+#toast{
+  position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(14px);
+  background:var(--dark);color:white;padding:12px 22px;border-radius:10px;
+  font-size:12px;font-weight:600;letter-spacing:.3px;z-index:600;
+  opacity:0;transition:.3s;white-space:nowrap;pointer-events:none;
+  display:flex;align-items:center;gap:8px;
+  box-shadow:0 8px 24px rgba(0,0,0,.3);
+  border:1px solid rgba(255,255,255,.07);
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#toast svg{color:var(--gold)}
+
+/* ── OVERLAY ── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;backdrop-filter:blur(8px)}
+
+/* ── MODAL ── */
+.modal{
+  position:fixed;bottom:0;left:0;right:0;background:white;
+  border-radius:24px 24px 0 0;z-index:401;max-height:94vh;overflow-y:auto;
+  padding:24px 20px 44px;transform:translateY(100%);
+  transition:.45s cubic-bezier(.16,1,.3,1);
+}
+.modal.open{transform:translateY(0)}
+.modal-handle{width:36px;height:4px;background:#E0D5D9;border-radius:4px;margin:0 auto 18px}
+
+/* ── CAROUSEL ── */
+.carousel-wrap{margin:-24px -20px 18px;position:relative;background:#F7F0F3;overflow:hidden}
+.carousel-track{display:flex;transition:.38s cubic-bezier(.16,1,.3,1)}
+.carousel-slide{min-width:100%;max-height:62vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:#F7F0F3}
+.carousel-slide img{width:100%;height:100%;max-height:62vh;object-fit:contain;object-position:center;display:block;cursor:zoom-in}
+.carousel-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,.9);border:none;width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;box-shadow:0 2px 12px rgba(0,0,0,.14);z-index:10;transition:.15s;
+}
+.carousel-btn:hover{background:white;box-shadow:0 4px 16px rgba(0,0,0,.18)}
+.carousel-btn.prev{left:10px}.carousel-btn.next{right:10px}
+.carousel-btn svg{width:11px;height:11px;stroke:var(--dark);stroke-width:2.5;fill:none}
+.carousel-dots{position:absolute;bottom:9px;left:0;right:0;display:flex;justify-content:center;gap:5px}
+.c-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:.25s}
+.c-dot.active{background:white;transform:scale(1.5);border-radius:3px}
+.carousel-wrap.single .carousel-btn,.carousel-wrap.single .carousel-dots{display:none}
+
+/* ── ZOOM ── */
+#zoomOverlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:700;align-items:center;justify-content:center}
+#zoomOverlay.show{display:flex}
+#zoomOverlay img{max-width:96vw;max-height:96vh;object-fit:contain;border-radius:4px}
+#zoomClose{position:absolute;top:14px;right:14px;background:rgba(255,255,255,.12);border:none;color:white;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s}
+#zoomClose:hover{background:rgba(255,255,255,.2)}
+
+/* ── PRODUCT MODAL ── */
+.p-brand{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:5px;font-weight:600}
+.p-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;line-height:1.3;color:var(--dark)}
+.price-row{display:flex;align-items:center;gap:10px;margin:10px 0 4px}
+.p-price{font-size:26px;font-weight:700;color:var(--dark);letter-spacing:-.5px}
+.p-old{font-size:14px;color:#C0B5B8;text-decoration:line-through}
+.p-price-sale{color:var(--rose)}
+.selector-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#BBB;display:block;margin-top:18px;margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:7px}
+.opt{
+  padding:9px 14px;border:1.5px solid #EDE5E9;border-radius:8px;
+  background:white;font-weight:600;font-size:12px;cursor:pointer;transition:.15s;
+  color:var(--dark);font-family:'DM Sans',sans-serif;
+}
+.opt:hover{border-color:#C8A0B0}
+.opt.active{border-color:var(--rose);color:var(--rose);background:var(--rose-pale)}
+.color-swatch{
+  display:flex;align-items:center;gap:7px;padding:7px 12px 7px 8px;
+  border:1.5px solid #EDE5E9;border-radius:8px;background:white;cursor:pointer;transition:.15s;
+}
+.color-swatch:hover{border-color:#C8A0B0}
+.color-swatch.active{border-color:var(--rose);background:var(--rose-pale)}
+.swatch-dot{width:16px;height:16px;border-radius:50%;border:2px solid rgba(0,0,0,.07);flex-shrink:0}
+.swatch-name{font-size:11px;font-weight:600;color:var(--dark)}
+
+/* ── SUGGESTIONS ── */
+.suggest-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#BBB;font-weight:700;margin-top:24px;margin-bottom:11px}
+.suggest-row{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px}
+.suggest-row::-webkit-scrollbar{display:none}
+.sug-card{flex-shrink:0;width:84px;cursor:pointer;background:var(--gray);border-radius:10px;overflow:hidden;transition:.2s;border:1px solid rgba(0,0,0,.04)}
+.sug-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.sug-card:active{transform:scale(.96)}
+.sug-card img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;display:block}
+.sug-card-info{padding:5px 7px 8px}
+.sug-card-price{font-size:10px;font-weight:700;color:var(--dark)}
+
+/* ── BTN ROW ── */
+.btn-row{display:flex;gap:9px;margin-top:22px}
+.btn-wish-p{
+  flex-shrink:0;width:50px;background:white;border:1.5px solid var(--rose-light);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;padding:0;
+}
+.btn-wish-p:hover{background:var(--rose-pale)}
+.btn-wish-p svg{width:17px;height:17px;stroke:var(--rose);fill:none;stroke-width:2}
+.btn-wish-p.active svg{fill:var(--rose)}
+.btn-add{
+  flex:1;padding:16px;
+  background:linear-gradient(135deg,var(--dark),var(--dark2));
+  color:white;border:none;border-radius:10px;font-weight:600;font-size:12px;
+  letter-spacing:1.5px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s;
+}
+.btn-add:hover{background:linear-gradient(135deg,var(--rose),#9B1F41)}
+.btn-add:active{transform:scale(.98)}
+
+/* ── FLY TO CART ── */
+.fly-img{position:fixed;border-radius:50%;pointer-events:none;z-index:999;transition:all .55s cubic-bezier(.16,1,.3,1);object-fit:cover}
+
+/* ── WISHLIST PANEL ── */
+#wishPanel{
+  position:fixed;bottom:0;left:0;right:0;background:white;
+  border-radius:24px 24px 0 0;z-index:401;max-height:80vh;overflow-y:auto;
+  padding:24px 20px 40px;transform:translateY(100%);
+  transition:.45s cubic-bezier(.16,1,.3,1);
+}
+#wishPanel.open{transform:translateY(0)}
+.wish-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:16px}
+.wish-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}
+.wish-item{background:var(--gray);border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s;border:1px solid rgba(0,0,0,.04)}
+.wish-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.wish-item:active{transform:scale(.97)}
+.wish-item img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top}
+.wish-item-info{padding:8px 10px 10px}
+.wish-item-name{font-size:10px;color:#888;line-height:1.3;height:26px;overflow:hidden;margin-bottom:4px}
+.wish-item-price{font-size:12px;font-weight:700;color:var(--dark)}
+
+/* ── SHARE BTN ── */
+.share-btn{
+  width:100%;padding:12px;background:transparent;color:var(--dark);
+  border:1.5px solid #E4D8DE;border-radius:10px;font-weight:600;font-size:11px;
+  letter-spacing:.5px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.2s;
+  display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;
+}
+.share-btn:hover{background:var(--dark);color:white;border-color:var(--dark)}
+
+/* ── CART ── */
+.cart-title{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:16px}
+.cart-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #F0E8ED;align-items:flex-start}
+.cart-item img{width:64px;height:80px;object-fit:cover;object-position:center top;border-radius:10px;flex-shrink:0;background:#F0E6EC}
+.ci-info{flex:1}
+.ci-name{font-size:11px;font-weight:600;line-height:1.3;margin-bottom:3px}
+.ci-sub{font-size:10px;color:#BBB;margin-bottom:5px}
+.ci-price{font-weight:700;color:var(--dark);font-size:13px}
+.rm-btn{background:none;border:none;font-size:18px;color:#DDD;cursor:pointer;padding:4px;transition:.15s}
+.rm-btn:hover{color:var(--rose)}
+.min-alert{background:var(--rose-pale);border:1.5px dashed var(--rose-light);color:var(--rose);padding:12px;border-radius:10px;font-size:11px;font-weight:600;text-align:center;margin-bottom:12px;line-height:1.6}
+
+/* ── DELIVERY OPTIONS ── */
+.delivery-section{margin-bottom:14px}
+.delivery-section-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#BBB;display:block;margin-bottom:10px}
+.delivery-options{display:flex;flex-direction:column;gap:8px}
+.delivery-opt{
+  border:1.5px solid #EDE5E9;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.2s;
+  display:flex;align-items:flex-start;gap:10px;background:white;
+}
+.delivery-opt:hover{border-color:#C8A0B0}
+.delivery-opt.active{border-color:var(--rose);background:var(--rose-pale)}
+.delivery-opt.disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
+.delivery-opt-radio{
+  width:16px;height:16px;border-radius:50%;border:2px solid #DDD;
+  margin-top:1px;flex-shrink:0;transition:.2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.delivery-opt.active .delivery-opt-radio{border-color:var(--rose);background:var(--rose)}
+.delivery-opt.active .delivery-opt-radio::after{content:'';width:5px;height:5px;border-radius:50%;background:white}
+.delivery-opt-body{flex:1}
+.delivery-opt-title{font-size:12px;font-weight:700;color:var(--dark);margin-bottom:2px}
+.delivery-opt-desc{font-size:10px;color:#999;line-height:1.5}
+.delivery-opt-price{font-size:11px;font-weight:700;color:var(--rose);margin-top:3px}
+.delivery-note{
+  background:#FFF8EE;border:1.5px solid #F5DFA0;border-radius:10px;
+  padding:11px 13px;margin-top:8px;font-size:11px;color:#8a6200;font-weight:600;
+  display:flex;align-items:center;gap:7px;line-height:1.5;
+}
+
+/* ── ORDER SUMMARY ── */
+.order-summary{background:var(--cream2);border-radius:12px;padding:14px;margin-bottom:14px;border:1px solid rgba(0,0,0,.04)}
+.os-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#BBB;font-weight:700;margin-bottom:10px}
+.os-item{display:flex;gap:9px;align-items:center;margin-bottom:8px}
+.os-item:last-child{margin-bottom:0}
+.os-img{width:40px;height:50px;object-fit:cover;object-position:center top;border-radius:7px;flex-shrink:0}
+.os-info{flex:1;font-size:10px;color:#888;line-height:1.4}
+.os-price{font-size:11px;font-weight:700;color:var(--dark)}
+.total-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid #F0E8ED;font-size:19px;font-weight:700}
+.total-val{color:var(--dark)}
+
+/* ── PROMO ── */
+.promo-row{display:flex;gap:7px;margin-bottom:8px}
+.promo-row .input-field{margin-bottom:0;flex:1}
+.promo-apply{padding:0 14px;background:var(--dark);color:white;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:11px;cursor:pointer;transition:.2s;letter-spacing:.5px;white-space:nowrap}
+.promo-apply:hover{background:var(--rose)}
+.promo-msg{font-size:10px;font-weight:600;margin-bottom:7px;padding:0 3px}
+.promo-msg.ok{color:#1a7a40}.promo-msg.err{color:var(--rose)}
+.input-field{width:100%;padding:12px 14px;border:1.5px solid #EDE5E9;border-radius:10px;background:#FAFAFA;font-family:'DM Sans',sans-serif;font-size:12px;color:var(--dark);margin-bottom:8px;outline:none;transition:.2s}
+.input-field:focus{border-color:var(--rose);background:white}
+select.input-field{cursor:pointer}
+
+.btn-wa{
+  width:100%;padding:16px;background:var(--green);color:white;border:none;border-radius:12px;
+  font-weight:700;font-size:12px;letter-spacing:1.5px;cursor:pointer;font-family:'DM Sans',sans-serif;
+  transition:.2s;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-wa:hover{filter:brightness(1.08)}
+.btn-wa:disabled{opacity:.4;cursor:not-allowed}
+
+.empty{text-align:center;padding:40px 20px;color:#CCC}
+.no-results{text-align:center;padding:36px 20px;color:#CCC;grid-column:1/-1;font-size:13px}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--dark);color:rgba(255,255,255,.3);
+  text-align:center;padding:30px 20px;font-size:11px;letter-spacing:1px;margin-top:16px;
+  border-top:1px solid rgba(196,151,58,.1);
+}
+footer strong{color:var(--gold);font-family:'Playfair Display',serif;font-size:14px;letter-spacing:3px}
+footer a{color:rgba(255,255,255,.45);text-decoration:none}
+footer a:hover{color:var(--gold)}
+
+/* ── BACK TO TOP ── */
+.back-top{
+  position:fixed;bottom:22px;right:18px;width:42px;height:42px;border-radius:12px;
+  background:var(--dark);border:1px solid rgba(196,151,58,.3);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  z-index:200;opacity:0;transition:.3s;pointer-events:none;
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+}
+.back-top.visible{opacity:1;pointer-events:auto}
+.back-top:hover{background:var(--dark2)}
+</style>
+</head>
+<body>
+
+<!-- ZOOM -->
+<div id="zoomOverlay" onclick="closeZoom()">
+  <img id="zoomImg" src="" alt="">
+  <button id="zoomClose" onclick="closeZoom()">×</button>
+</div>
+
+<!-- TOAST -->
+<div id="toast" role="status" aria-live="polite">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Ajouté au panier</span>
+</div>
+
+<header>
+  <div class="logo">MADA<em>GLAM</em></div>
+  <div class="header-search">
+    <svg class="hs-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <input type="text" id="searchInput" placeholder="Rechercher..." oninput="filterProducts()">
+  </div>
+  <div class="header-actions">
+    <button class="icon-btn" onclick="openWish()" title="Favoris" aria-label="Voir les favoris">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <span class="ibadge" id="wishCount" style="display:none">0</span>
+    </button>
+    <button class="cart-btn" onclick="openCart()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span id="count">0</span>
+    </button>
+  </div>
+</header>
+
+<div class="promo-bar">✦ Commande min. 160 000 Ar ✦ Livraison partout à Madagascar ✦</div>
+
+<div class="hero">
+  <div class="hero-eyebrow">Nouvelle Saison</div>
+  <h1>La<em>Collection</em></h1>
+  <p class="hero-sub">Mode exclusive · Madagascar</p>
+</div>
+
+<div class="filter-bar">
+  <button class="ftab active" onclick="setFilter('all',this)">Tout</button>
+  <button class="ftab" onclick="setFilter('dress',this)">Robes</button>
+  <button class="ftab" onclick="setFilter('top',this)">Tops</button>
+  <button class="ftab" onclick="setFilter('promo',this)">Promos</button>
+  <button class="ftab" onclick="setFilter('wish',this)">❤ Favoris</button>
+</div>
+
+<div class="sort-bar">
+  <span class="sort-count" id="sortCount">8 articles</span>
+  <select class="sort-select" onchange="sortProducts(this.value)">
+    <option value="default">Trier par</option>
+    <option value="price-asc">Prix ↑</option>
+    <option value="price-desc">Prix ↓</option>
+  </select>
+</div>
+
+<div class="section" id="sectionDresses">
+  <div class="section-header"><div><span>Nouvelle Collection</span><h2>Robes</h2></div></div>
+  <div class="grid" id="gridDresses"></div>
+</div>
+
+<div class="section" id="sectionTops" style="padding-top:0">
+  <div class="section-header"><div><span>Les Incontournables</span><h2>Tops</h2></div></div>
+  <div class="grid" id="gridTops"></div>
+</div>
+
+<footer>
+  <strong>MADA GLAM</strong><br><br>
+  Mode exclusive à Madagascar<br><br>
+  Commandes &amp; infos via <a href="https://wa.me/33767245066">WhatsApp</a><br><br>
+  ©️ 2026 MADA GLAM
+</footer>
+
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<!-- WISHLIST PANEL -->
+<div id="wishPanel">
+  <div class="modal-handle"></div>
+  <div class="wish-title">Mes Favoris ❤</div>
+  <div id="wishList"></div>
+</div>
+
+<!-- MODAL PRODUIT -->
+<div class="modal" id="modalProduct">
+  <div class="modal-handle"></div>
+  <div class="carousel-wrap" id="carouselWrap">
+    <div class="carousel-track" id="carouselTrack"></div>
+    <button class="carousel-btn prev" onclick="carouselMove(-1)">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="carousel-btn next" onclick="carouselMove(1)">
+      <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+  <div class="p-brand" id="p-brand"></div>
+  <div class="p-title" id="p-title"></div>
+  <div class="price-row">
+    <div class="p-price" id="p-price"></div>
+    <div class="p-old" id="p-old"></div>
+  </div>
+  <span class="selector-label">Couleur</span>
+  <div class="opts" id="p-colors"></div>
+  <span class="selector-label">Taille</span>
+  <div class="opts" id="p-sizes"></div>
+  <div class="suggest-title">Vous aimerez aussi</div>
+  <div class="suggest-row" id="p-suggest"></div>
+  <div class="btn-row">
+    <button class="btn-wish-p" id="btnWishP" onclick="toggleWishModal()">
+      <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </button>
+    <button class="btn-add" onclick="addToCart()">+ AJOUTER AU PANIER</button>
+  </div>
+  <button class="share-btn" onclick="shareProduct()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    PARTAGER CE PRODUIT
+  </button>
+</div>
+
+<!-- MODAL PANIER -->
+<div class="modal" id="modalCart">
+  <div class="modal-handle"></div>
+  <div class="cart-title">Mon Panier 🛍</div>
+  <div id="minMsg"></div>
+  <div id="cartList"></div>
+  <div id="cartDetails" style="display:none">
+    <div class="order-summary" id="orderSummary"></div>
+
+    <input type="text" id="c-name" class="input-field" placeholder="👤 Nom complet">
+    <input type="tel" id="c-phone" class="input-field" placeholder="📞 Numéro de téléphone">
+    <input type="text" id="c-addr" class="input-field" placeholder="🏠 Quartier / Rue">
+    <select id="c-city" class="input-field" onchange="onCityChange()">
+      <option value="">📍 Choisir la ville</option>
+      <option>Antananarivo</option><option>Farafangana</option><option>Toamasina</option>
+      <option>Antsirabe</option><option>Fianarantsoa</option><option>Mahajanga</option>
+      <option>Toliara</option><option>Antsiranana</option><option>Nosy Be</option>
+      <option>Autre ville</option>
+    </select>
+
+    <!-- LIVRAISON -->
+    <div class="delivery-section">
+      <span class="delivery-section-label">Mode de livraison</span>
+      <div class="delivery-options" id="deliveryOptions">
+
+        <!-- Option 1 : Standard -->
+        <div class="delivery-opt active" id="opt-standard" onclick="selectDelivery('standard')">
+          <div class="delivery-opt-radio"></div>
+          <div class="delivery-opt-body">
+            <div class="delivery-opt-title">📦 Livraison standard</div>
+            <div class="delivery-opt-desc">Disponible partout à Madagascar — délai communiqué par message</div> 
+          </div>
+        </div>
+
+        <!-- Option 2 : Domicile Tana -->
+        <div class="delivery-opt disabled" id="opt-tana" onclick="selectDelivery('tana')">
+          <div class="delivery-opt-radio"></div>
+          <div class="delivery-opt-body">
+            <div class="delivery-opt-title">🏠 Livraison à domicile — Antananarivo</div>
+            <div class="delivery-opt-desc">Livraison directement chez vous à Tana</div>
+            <div class="delivery-opt-price">2 000 – 5 000 Ar (à payer au livreur)</div>
+          </div>
+        </div>
+
+        <!-- Option 3 : Domicile Farafangana -->
+        <div class="delivery-opt disabled" id="opt-fara" onclick="selectDelivery('fara')">
+          <div class="delivery-opt-radio"></div>
+          <div class="delivery-opt-body">
+            <div class="delivery-opt-title">🏠 Livraison à domicile — Farafangana</div>
+            <div class="delivery-opt-desc">Livraison directement chez vous à Farafangana</div>
+            <div class="delivery-opt-price">2 000 – 5 000 Ar (à payer au livreur)</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="delivery-note" id="deliveryNote">
+        💳 Le paiement de la livraison se fait directement au livreur à la réception
+      </div>
+    </div>
+    <!-- FIN LIVRAISON -->
+
+    <div class="promo-row">
+      <input type="text" id="c-promo" class="input-field" placeholder="🎟 Code promo">
+      <button class="promo-apply" onclick="applyPromo()">Appliquer</button>
+    </div>
+    <div id="promoMsg" class="promo-msg"></div>
+    <div class="total-row">
+      <span>Total articles</span>
+      <span class="total-val" id="cartTotal">0 Ar</span>
+    </div>
+    <button class="btn-wa" id="btnWA" onclick="sendWA()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      VALIDER SUR WHATSAPP
+    </button>
+  </div>
+</div>
+
+<script>
+const MIN = 160000;
+const PROMO_CODES = {'MADA10':10,'GLAM15':15,'VIP20':20};
+
+const swatchColors = {
+  'Black':'#1a1a1a','Apricot':'#E8B49A','Navy Blue':'#1B2A6B',
+  'Champagne':'#D4B896','Blue':'#4A7EC5','Coffee':'#6B3E26',
+  'Floral':'linear-gradient(135deg,#f9a8d4,#86efac,#7dd3fc)',
+  'Sky Floral':'linear-gradient(135deg,#bae6fd,#fbcfe8,#d9f99d)',
+  'Multicolor (1)':'linear-gradient(135deg,#f87171,#fb923c,#fbbf24)',
+  'Multicolor (2)':'linear-gradient(135deg,#a78bfa,#818cf8,#67e8f9)',
+  'Watercolor':'linear-gradient(135deg,#93c5fd,#c4b5fd,#fbcfe8)',
+  'Denim Blue':'#3B5BDB','Hot Pink':'#EC4899',
+  'Multicolor':'linear-gradient(135deg,#f87171,#fb923c,#fbbf24)',
+  'Red':'#DC2626','Dusty Pink':'#D4A0A0','Pink':'#F9A8D4',
+};
+
+const products = [
+  {id:1,cat:'dress',name:'Sweetra Knit Patchwork V-Neck Ruffle Backless Mini Dress',brand:'Sweetra',
+    variants:[
+      {color:'Apricot',price:55000,images:['apricot1.jpeg','apricot2.jpeg'],sizes:['36','38','40']},
+      {color:'Black',price:50000,images:['black1.jpeg'],sizes:['36','38']},
+      {color:'Navy Blue',price:60000,images:['navy1.jpeg'],sizes:['36','38']}
+    ]},
+  {id:2,cat:'dress',name:'Aloruh Champagne Satin Cross Back Twist Backless Dress',brand:'Aloruh',
+    variants:[{color:'Champagne',price:55000,images:['champ1.jpeg','champ2.jpeg','champ3.jpeg'],sizes:['36','38','40']}]},
+  {id:3,cat:'dress',name:'Rafferiza One-Shoulder Metal Buckle Bodycon Mesh Dress',brand:'Rafferiza',
+    variants:[
+      {color:'Blue',price:45000,oldPrice:65000,images:['blue1.jpeg','blue2.jpeg'],sizes:['36','38']},
+      {color:'Coffee',price:50000,oldPrice:70000,images:['coffee1.jpeg'],sizes:['36','38']}
+    ]},
+  {id:4,cat:'dress',name:'BamGleam Strapless Color Block Floral Print Maxi Dress',brand:'BamGleam',
+    variants:[
+      {color:'Apricot',price:45000,images:['A1.jpeg','A2.jpeg'],sizes:['S','M','L']},
+      {color:'Pink',price:45000,images:['P.jpeg'],sizes:['S','M']},
+      {color:'Blue',price:46000,images:['B.jpeg'],sizes:['S','M']},
+      {color:'Hot Pink',price:46000,images:['H.jpeg'],sizes:['S','M']},
+      {color:'Multicolor',price:46000,images:['M5.jpeg'],sizes:['S','M']}
+    ]},
+  {id:5,cat:'dress',name:'Beach Vacation Contrast Floral Tube Top Bodycon Long Dress',brand:'SHEIN',
+    variants:[{color:'Sky Floral',price:45000,images:['B1.jpeg','B2.jpeg'],sizes:['XS','S','M']}]},
+  {id:6,cat:'top',name:'EZwear Casual Floral Print Halter Tie Neck Blouse',brand:'SHEIN EZwear',
+    variants:[
+      {color:'Multicolor (1)',price:21000,images:['M1.jpeg','M2.jpeg'],sizes:['S','M','L']},
+      {color:'Multicolor (2)',price:22000,images:['M3.jpeg'],sizes:['S','M']}
+    ]},
+  {id:7,cat:'top',name:'EZwear Blue Watercolor Floral Print Cami Tank Top',brand:'SHEIN EZwear',
+    variants:[{color:'Watercolor',price:17000,images:['IG1.jpeg','IG2.jpeg','IG3.jpeg'],sizes:['S','M','L']}]},
+  {id:8,cat:'top',name:'Essnce Denim Effect Knitted Strapless Top',brand:'SHEIN Essnce',
+    variants:[{color:'Denim Blue',price:17000,images:['image1.jpeg','image2.jpeg','image3.jpeg'],sizes:['S','M','L']}]}
+];
+
+// STATE
+let cart = JSON.parse(localStorage.getItem('mg_cart')||'[]');
+let wishlist = JSON.parse(localStorage.getItem('mg_wish')||'[]');
+let curProd=null,curVar=null,curSize=null,carouselIdx=0;
+let activeFilter='all',activeSort='default',searchQ='';
+let promoDiscount=0;
+let selectedDelivery='standard'; // 'standard' | 'tana' | 'fara'
+
+function saveCart(){ localStorage.setItem('mg_cart',JSON.stringify(cart)); }
+function saveWish(){ localStorage.setItem('mg_wish',JSON.stringify(wishlist)); }
+
+// UTILS
+function colorStyle(c){ const s=swatchColors[c]; if(!s)return'background:#ccc'; return s.startsWith('linear')?`background:${s}`:`background-color:${s}`; }
+function firstImage(v){ return v.images&&v.images.length?v.images[0]:''; }
+
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2300);
+}
+
+// ── DELIVERY LOGIC ──────────────────────────────────────────
+function onCityChange(){
+  const city=document.getElementById('c-city').value;
+  const isTana=city==='Antananarivo';
+  const isFara=city==='Farafangana';
+
+  // Reset delivery to standard when city changes
+  selectedDelivery='standard';
+
+  const optTana=document.getElementById('opt-tana');
+  const optFara=document.getElementById('opt-fara');
+
+  optTana.classList.toggle('disabled',!isTana);
+  optFara.classList.toggle('disabled',!isFara);
+
+  // If current selection is a domicile option but city no longer matches, revert to standard
+  if(selectedDelivery==='tana'&&!isTana) selectedDelivery='standard';
+  if(selectedDelivery==='fara'&&!isFara) selectedDelivery='standard';
+
+  updateDeliveryUI();
+}
+
+function selectDelivery(type){
+  const city=document.getElementById('c-city').value;
+  if(type==='tana'&&city!=='Antananarivo'){ showToast('⚠️ Livraison domicile Tana uniquement'); return; }
+  if(type==='fara'&&city!=='Farafangana'){ showToast('⚠️ Livraison domicile Farafangana uniquement'); return; }
+  selectedDelivery=type;
+  updateDeliveryUI();
+}
+
+function updateDeliveryUI(){
+  document.querySelectorAll('.delivery-opt').forEach(el=>el.classList.remove('active'));
+  const map={'standard':'opt-standard','tana':'opt-tana','fara':'opt-fara'};
+  const el=document.getElementById(map[selectedDelivery]);
+  if(el&&!el.classList.contains('disabled')) el.classList.add('active');
+  else { selectedDelivery='standard'; document.getElementById('opt-standard').classList.add('active'); }
+}
+
+function deliveryLabel(){
+  if(selectedDelivery==='tana') return 'Livraison à domicile — Antananarivo (2 000–5 000 Ar à payer au livreur)';
+  if(selectedDelivery==='fara') return 'Livraison à domicile — Farafangana (2 000–5 000 Ar à payer au livreur)';
+  return 'Livraison standard — toute Madagascar (frais à payer au livreur)';
+}
+// ─────────────────────────────────────────────────────────────
+
+// FILTER / SORT / SEARCH
+function setFilter(f,btn){
+  activeFilter=f;
+  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderAll();
+}
+function sortProducts(v){ activeSort=v; renderAll(); }
+function filterProducts(){ searchQ=document.getElementById('searchInput').value.toLowerCase(); renderAll(); }
+
+function getFiltered(){
+  let list=[...products];
+  if(activeFilter==='dress') list=list.filter(p=>p.cat==='dress');
+  else if(activeFilter==='top') list=list.filter(p=>p.cat==='top');
+  else if(activeFilter==='promo') list=list.filter(p=>p.variants.some(v=>v.oldPrice));
+  else if(activeFilter==='wish') list=list.filter(p=>wishlist.includes(p.id));
+  if(searchQ) list=list.filter(p=>p.name.toLowerCase().includes(searchQ)||p.brand.toLowerCase().includes(searchQ));
+  if(activeSort==='price-asc') list.sort((a,b)=>a.variants[0].price-b.variants[0].price);
+  if(activeSort==='price-desc') list.sort((a,b)=>b.variants[0].price-a.variants[0].price);
+  return list;
+}
+
+// RENDER
+function renderAll(){
+  const filtered=getFiltered();
+  const gd=document.getElementById('gridDresses');
+  const gt=document.getElementById('gridTops');
+  const sd=document.getElementById('sectionDresses');
+  const st=document.getElementById('sectionTops');
+  gd.innerHTML=''; gt.innerHTML='';
+
+  const dresses=filtered.filter(p=>p.cat==='dress');
+  const tops=filtered.filter(p=>p.cat==='top');
+
+  function cardHtml(p){
+    const v=p.variants[0];
+    const imgSrc=firstImage(v);
+    const isWished=wishlist.includes(p.id);
+    const hasPromo=p.variants.some(x=>x.oldPrice);
+    const promoBadge=hasPromo?`<div class="badge-promo">PROMO</div>`:'';
+    const oldHtml=v.oldPrice?`<span class="card-old">${v.oldPrice.toLocaleString()} Ar</span>`:'';
+    const dots=p.variants.length>1
+      ?`<div class="badge-colors">${p.variants.slice(0,4).map(vv=>`<div class="color-dot" style="${colorStyle(vv.color)}"></div>`).join('')}</div>`:'';
+    return `<div class="card" id="card-${p.id}" onclick="openP(${p.id})">
+      <div class="card-img">
+        <img src="${imgSrc}" alt="${p.name}" loading="lazy">
+        ${promoBadge}
+        <button class="wish-btn ${isWished?'active':''}" onclick="event.stopPropagation();toggleWish(${p.id},this)">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        ${dots}
+      </div>
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+        <div class="card-pricing">
+          <div class="card-price ${hasPromo?'card-promo-price':''}">${v.price.toLocaleString()} Ar</div>${oldHtml}
+        </div>
+      </div>
+    </div>`;
+  }
+
+  if(!filtered.length){
+    gd.innerHTML=`<div class="no-results">😕 Aucun article trouvé</div>`;
+    sd.style.display=''; st.style.display='none';
+  } else {
+    sd.style.display=dresses.length?'':'none';
+    st.style.display=tops.length?'':'none';
+    dresses.forEach(p=>gd.innerHTML+=cardHtml(p));
+    tops.forEach(p=>gt.innerHTML+=cardHtml(p));
+  }
+  document.getElementById('sortCount').textContent=`${filtered.length} article${filtered.length>1?'s':''}`;
+}
+
+// CAROUSEL
+function buildCarousel(images){
+  const track=document.getElementById('carouselTrack');
+  const dots=document.getElementById('carouselDots');
+  const wrap=document.getElementById('carouselWrap');
+  carouselIdx=0;
+  track.innerHTML=images.map(src=>`
+    <div class="carousel-slide">
+      <img src="${src}" alt="product" onclick="openZoom('${src}')">
+    </div>`).join('');
+  dots.innerHTML=images.map((_,i)=>`<div class="c-dot ${i===0?'active':''}" onclick="goToSlide(${i})"></div>`).join('');
+  wrap.classList.toggle('single',images.length<=1);
+  updateCarousel();
+}
+function updateCarousel(){
+  document.getElementById('carouselTrack').style.transform=`translateX(-${carouselIdx*100}%)`;
+  document.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('active',i===carouselIdx));
+}
+function carouselMove(dir){
+  const n=curVar.images.length;
+  carouselIdx=(carouselIdx+dir+n)%n;
+  updateCarousel();
+}
+function goToSlide(i){ carouselIdx=i; updateCarousel(); }
+
+// ZOOM
+function openZoom(src){ document.getElementById('zoomImg').src=src; document.getElementById('zoomOverlay').classList.add('show'); }
+function closeZoom(){ document.getElementById('zoomOverlay').classList.remove('show'); }
+
+// PRODUCT MODAL
+function openP(id){
+  curProd=products.find(p=>p.id===id);
+  selectVar(0);
+  document.getElementById('overlay').style.display='block';
+  document.getElementById('modalProduct').classList.add('open');
+  document.getElementById('modalProduct').scrollTop=0;
+}
+function selectVar(idx){
+  curVar=curProd.variants[idx]; curSize=null;
+  buildCarousel(curVar.images);
+  document.getElementById('p-brand').textContent=curProd.brand;
+  document.getElementById('p-title').textContent=curProd.name+' — '+curVar.color;
+  const pp=document.getElementById('p-price'); pp.textContent=curVar.price.toLocaleString()+' Ar'; pp.className=curVar.oldPrice?'p-price p-price-sale':'p-price';
+  document.getElementById('p-old').textContent=curVar.oldPrice?curVar.oldPrice.toLocaleString()+' Ar':'';
+
+  document.getElementById('p-colors').innerHTML=curProd.variants.map((v,i)=>`
+    <div class="color-swatch ${v===curVar?'active':''}" onclick="selectVar(${i})">
+      <div class="swatch-dot" style="${colorStyle(v.color)}"></div>
+      <span class="swatch-name">${v.color}</span>
+    </div>`).join('');
+
+  document.getElementById('p-sizes').innerHTML=curVar.sizes.map(s=>
+    `<button class="opt" onclick="selectSize(this,'${s}')">${s}</button>`
+  ).join('');
+
+  const sugg=products.filter(p=>p.id!==curProd.id&&p.cat===curProd.cat).slice(0,5);
+  document.getElementById('p-suggest').innerHTML=sugg.map(p=>`
+    <div class="sug-card" onclick="closeAll();setTimeout(()=>openP(${p.id}),220)">
+      <img src="${firstImage(p.variants[0])}" alt="${p.name}">
+      <div class="sug-card-info"><div class="sug-card-price">${p.variants[0].price.toLocaleString()} Ar</div></div>
+    </div>`).join('');
+
+  const wb=document.getElementById('btnWishP');
+  wishlist.includes(curProd.id)?wb.classList.add('active'):wb.classList.remove('active');
+}
+
+function selectSize(btn,s){
+  document.querySelectorAll('#p-sizes .opt').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); curSize=s;
+}
+
+// WISHLIST
+function toggleWish(id,btn){
+  const idx=wishlist.indexOf(id);
+  if(idx===-1){ wishlist.push(id); if(btn)btn.classList.add('active'); showToast('Ajouté aux favoris ❤'); }
+  else{ wishlist.splice(idx,1); if(btn)btn.classList.remove('active'); showToast('Retiré des favoris'); }
+  saveWish(); updateWishCount();
+  if(activeFilter==='wish') renderAll();
+}
+function updateWishCount(){
+  const el=document.getElementById('wishCount');
+  if(wishlist.length){ el.style.display='flex'; el.textContent=wishlist.length; }
+  else el.style.display='none';
+}
+function openWish(){
+  const list=document.getElementById('wishList');
+  if(!wishlist.length){
+    list.innerHTML=`<div class="empty" style="color:#bbb;text-align:center;padding:30px 0">Aucun favori pour l'instant<br><span style="font-size:30px;display:block;margin-top:10px">🤍</span></div>`;
+  } else {
+    const items=products.filter(p=>wishlist.includes(p.id));
+    list.innerHTML=`<div class="wish-grid">${items.map(p=>`
+      <div class="wish-item" onclick="closeAll();setTimeout(()=>openP(${p.id}),220)">
+        <img src="${firstImage(p.variants[0])}" alt="${p.name}">
+        <div class="wish-item-info">
+          <div class="wish-item-name">${p.name}</div>
+          <div class="wish-item-price">${p.variants[0].price.toLocaleString()} Ar</div>
+        </div>
+      </div>`).join('')}</div>`;
+  }
+  document.getElementById('overlay').style.display='block';
+  document.getElementById('wishPanel').classList.add('open');
+}
+
+function toggleWishModal(){
+  toggleWish(curProd.id,null);
+  const wb=document.getElementById('btnWishP');
+  wishlist.includes(curProd.id)?wb.classList.add('active'):wb.classList.remove('active');
+  const cardWb=document.querySelector(`#card-${curProd.id} .wish-btn`);
+  if(cardWb){ wishlist.includes(curProd.id)?cardWb.classList.add('active'):cardWb.classList.remove('active'); }
+}
+
+// FLY TO CART
+function flyToCart(imgSrc){
+  const cartBtn=document.querySelector('.cart-btn');
+  const r=cartBtn.getBoundingClientRect();
+  const img=document.createElement('img');
+  img.src=imgSrc; img.className='fly-img';
+  img.style.cssText=`width:76px;height:96px;top:${window.innerHeight/2-48}px;left:${window.innerWidth/2-38}px;opacity:1;border-radius:10px`;
+  document.body.appendChild(img);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    img.style.top=`${r.top+r.height/2-8}px`;
+    img.style.left=`${r.left+r.width/2-8}px`;
+    img.style.width='16px';img.style.height='16px';
+    img.style.opacity='0';img.style.borderRadius='50%';
+    setTimeout(()=>img.remove(),620);
+  }));
+}
+
+function addToCart(){
+  if(!curSize){ showToast('⚠️ Veuillez choisir une taille'); return; }
+  const imgSrc=firstImage(curVar);
+  flyToCart(imgSrc);
+  cart.push({...curVar,img:imgSrc,prodName:curProd.name,size:curSize,prodId:curProd.id});
+  saveCart();
+  document.getElementById('count').textContent=cart.length;
+  closeAll();
+  showToast(`✓ ${curProd.brand} ajouté au panier`);
+}
+
+// PROMO
+function applyPromo(){
+  const code=document.getElementById('c-promo').value.trim().toUpperCase();
+  const el=document.getElementById('promoMsg');
+  if(PROMO_CODES[code]){
+    promoDiscount=PROMO_CODES[code];
+    el.className='promo-msg ok';
+    el.textContent=`✓ Code appliqué ! −${promoDiscount}% sur votre commande`;
+  } else {
+    promoDiscount=0;
+    el.className='promo-msg err';
+    el.textContent='❌ Code invalide';
+  }
+  refreshCartTotal();
+}
+
+function refreshCartTotal(){
+  const raw=cart.reduce((s,i)=>s+i.price,0);
+  const total=Math.round(raw*(1-promoDiscount/100));
+  document.getElementById('cartTotal').textContent=total.toLocaleString()+' Ar';
+  const btn=document.getElementById('btnWA');
+  const msg=document.getElementById('minMsg');
+  if(total<MIN){
+    msg.innerHTML=`<div class="min-alert">⚠️ Il manque <strong>${(MIN-total).toLocaleString()} Ar</strong> pour valider votre commande</div>`;
+    btn.disabled=true;
+  } else {
+    msg.innerHTML=''; btn.disabled=false;
+  }
+}
+
+// CART
+function openCart(){
+  promoDiscount=0;
+  selectedDelivery='standard';
+  document.getElementById('promoMsg').textContent='';
+  document.getElementById('c-promo').value='';
+
+  const list=document.getElementById('cartList');
+  const details=document.getElementById('cartDetails');
+  if(!cart.length){
+    list.innerHTML=`<div class="empty">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <p style="font-size:12px;margin-top:10px">Votre panier est vide</p>
+    </div>`;
+    details.style.display='none';
+  } else {
+    list.innerHTML=cart.map((item,i)=>`
+      <div class="cart-item">
+        <img src="${item.img}" alt="${item.prodName}">
+        <div class="ci-info">
+          <div class="ci-name">${item.prodName}</div>
+          <div class="ci-sub">${item.color} · Taille ${item.size}</div>
+          <div class="ci-price">${item.price.toLocaleString()} Ar</div>
+        </div>
+        <button class="rm-btn" onclick="removeItem(${i})" aria-label="Supprimer">×</button>
+      </div>`).join('');
+    document.getElementById('orderSummary').innerHTML=`
+      <div class="os-title">Récapitulatif de commande</div>
+      ${cart.map(item=>`
+        <div class="os-item">
+          <img class="os-img" src="${item.img}" alt="${item.prodName}">
+          <div class="os-info">${item.prodName}<br><strong>${item.color} · T.${item.size}</strong></div>
+          <div class="os-price">${item.price.toLocaleString()} Ar</div>
+        </div>`).join('')}`;
+    details.style.display='block';
+
+    // Reset delivery UI
+    updateDeliveryUI();
+    // Reset city-dependent options
+    document.getElementById('opt-tana').classList.add('disabled');
+    document.getElementById('opt-fara').classList.add('disabled');
+    document.getElementById('c-city').value='';
+
+    refreshCartTotal();
+  }
+  document.getElementById('overlay').style.display='block';
+  document.getElementById('modalCart').classList.add('open');
+}
+
+function removeItem(i){
+  cart.splice(i,1); saveCart();
+  document.getElementById('count').textContent=cart.length;
+  openCart();
+}
+
+// WHATSAPP
+function sendWA(){
+  const n=document.getElementById('c-name').value.trim();
+  const p=document.getElementById('c-phone').value.trim();
+  const a=document.getElementById('c-addr').value.trim();
+  const city=document.getElementById('c-city').value;
+  if(!n||!p||!a||!city){ showToast('⚠️ Remplissez tous les champs'); return; }
+  const raw=cart.reduce((s,i)=>s+i.price,0);
+  const total=Math.round(raw*(1-promoDiscount/100));
+  let msg=`✨ *COMMANDE MADA GLAM* ✨\n\n👤 *Client :* ${n}\n📞 *Tél :* ${p}\n🏠 *Adresse :* ${a}, ${city}\n\n📦 *Articles :*\n`;
+  cart.forEach(i=>msg+=`‣ ${i.prodName}\n   ${i.color} / T.${i.size} — ${i.price.toLocaleString()} Ar\n`);
+  if(promoDiscount) msg+=`\n🎟 Code promo −${promoDiscount}%`;
+  msg+=`\n\n💰 *TOTAL articles : ${total.toLocaleString()} Ar*`;
+  msg+=`\n🚚 *Livraison :* ${deliveryLabel()}`;
+  msg+=`\n💳 Paiement livraison au livreur à la réception`;
+  window.open(`https://wa.me/33767245066?text=${encodeURIComponent(msg)}`);
+}
+
+// SHARE
+function shareProduct(){
+  if(!curProd) return;
+  const text=`Regarde cet article sur MADA GLAM ✨\n${curProd.name}\nÀ partir de ${curProd.variants[0].price.toLocaleString()} Ar`;
+  if(navigator.share){ navigator.share({title:'MADA GLAM',text,url:window.location.href}).catch(()=>{}); }
+  else { navigator.clipboard.writeText(text).then(()=>showToast('Lien copié !')).catch(()=>showToast('Partage non disponible')); }
+}
+
+// CLOSE ALL
+function closeAll(){
+  document.getElementById('overlay').style.display='none';
+  document.querySelectorAll('.modal').forEach(m=>m.classList.remove('open'));
+  document.getElementById('wishPanel').classList.remove('open');
+}
+
+// BACK TO TOP
+window.addEventListener('scroll',()=>{
+  const bt=document.getElementById('backTop');
+  bt.classList.toggle('visible',window.scrollY>300);
+},{passive:true});
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const wrap=document.getElementById('carouselWrap');
+  let tx=0;
+  wrap.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+  wrap.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-tx;
+    if(Math.abs(dx)>40) carouselMove(dx<0?1:-1);
+  },{passive:true});
+});
+
+// INIT
+updateWishCount();
+document.getElementById('count').textContent=cart.length;
+renderAll();
+</script>
+</body>
+</html>
