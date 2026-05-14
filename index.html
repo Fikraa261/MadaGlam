@@ -419,7 +419,7 @@ footer a:hover{color:var(--gold)}
   </div>
 </header>
 
-<div class="promo-bar">✦ Livraison GRATUITE dès 160 000 Ar ✦ Sinon 10 000 Ar ✦ Paiement à la livraison ✦</div>
+<div class="promo-bar">✦ Livraison GRATUITE dès 160 000 Ar ✦ Sinon 100 000 Ar ✦ Paiement à la livraison ✦</div>
 
 <div class="hero">
   <div class="hero-eyebrow">Nouvelle Saison</div>
@@ -866,10 +866,10 @@ function applyPromo(){
 function refreshCartTotal(){
   const raw=cart.reduce((s,i)=>s+i.price,0);
   const subtotal=Math.round(raw*(1-promoDiscount/100));
-  const delivery=subtotal>=160000?0:10000;
+  const delivery=subtotal>=160000?0:100000;
   const total=subtotal+delivery;
   const dtxt=document.getElementById('deliveryText');
-  if(dtxt) dtxt.textContent=delivery===0?'🎉 Livraison GRATUITE !':'Livraison : 10 000 Ar (gratuite dès 160 000 Ar)';
+  if(dtxt) dtxt.textContent=delivery===0?'🎉 Livraison GRATUITE !':'Livraison : 100 000 Ar (gratuite dès 160 000 Ar)';
   const di=document.getElementById('deliveryInfo');
   if(di) di.style.background=delivery===0?'#F0FFF6':'#FFF8E1',di.style.borderColor=delivery===0?'#A8E6C1':'#FFD54F',di.style.color=delivery===0?'#1a7a40':'#8a6200';
   document.getElementById('cartTotal').textContent=total.toLocaleString()+' Ar';
@@ -940,10 +940,10 @@ function sendWA(){
   const total=Math.round(raw*(1-promoDiscount/100));
   let msg=`✨ *COMMANDE MADA GLAM* ✨\n\n👤 *Client :* ${n}\n📞 *Tél :* ${p}\n🏠 *Adresse :* ${a}, ${city}\n\n📦 *Articles :*\n`;
   cart.forEach(i=>msg+=`‣ ${i.prodName}\n   ${i.color} / T.${i.size} — ${i.price.toLocaleString()} Ar\n`);
-  const delivery=total>=160000?0:10000;
+  const delivery=total>=160000?0:100000;
   const grandTotal=total+delivery;
   if(promoDiscount) msg+=`\n🎟 Code promo −${promoDiscount}%`;
-  msg+=`\n🚚 Livraison : ${delivery===0?'GRATUITE':'10 000 Ar'}`;
+  msg+=`\n🚚 Livraison : ${delivery===0?'GRATUITE':'100 000 Ar'}`;
   msg+=`\n\n💰 *TOTAL : ${grandTotal.toLocaleString()} Ar*\n📅 Délai de livraison communiqué par message`;
   window.open(`https://wa.me/33767245066?text=${encodeURIComponent(msg)}`);
 }
