@@ -561,7 +561,6 @@ footer a:hover{color:var(--gold)}
 </div>
 
 <script>
-const MIN = 160000;
 const PROMO_CODES = {'MADA10':10,'GLAM15':15,'VIP20':20};
 
 const swatchColors = {
@@ -875,12 +874,7 @@ function refreshCartTotal(){
   document.getElementById('cartTotal').textContent=total.toLocaleString()+' Ar';
   const btn=document.getElementById('btnWA');
   const msg=document.getElementById('minMsg');
-  if(subtotal<MIN){
-    msg.innerHTML=`<div class="min-alert">⚠️ Il manque <strong>${(MIN-subtotal).toLocaleString()} Ar</strong> pour valider votre commande</div>`;
-    btn.disabled=true;
-  } else {
-    msg.innerHTML=''; btn.disabled=false;
-  }
+  msg.innerHTML=''; btn.disabled=false;
 }
 
 // CART
