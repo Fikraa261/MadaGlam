@@ -367,6 +367,17 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
 footer a:hover{color:var(--gold)}
 
 /* ── BACK TO TOP ── */
+.back-btn-overlay{
+  position:absolute;top:12px;left:12px;z-index:20;
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(255,255,255,.88);backdrop-filter:blur(6px);
+  border:none;border-radius:20px;padding:6px 12px 6px 8px;
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;
+  color:var(--dark);cursor:pointer;transition:.15s;
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+.back-btn-overlay:hover{background:white}
+.back-btn-overlay svg{stroke:var(--dark)}
 .back-btn{
   display:inline-flex;align-items:center;gap:6px;
   background:none;border:none;color:#999;font-family:'DM Sans',sans-serif;
@@ -481,11 +492,11 @@ footer a:hover{color:var(--gold)}
 <!-- MODAL PRODUIT -->
 <div class="modal" id="modalProduct">
   <div class="modal-handle"></div>
-  <button class="back-btn" onclick="closeAll()">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
-    Retour
-  </button>
   <div class="carousel-wrap" id="carouselWrap">
+    <button class="back-btn-overlay" onclick="closeAll()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+      Retour
+    </button>
     <div class="carousel-track" id="carouselTrack"></div>
     <button class="carousel-btn prev" onclick="carouselMove(-1)">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
@@ -620,7 +631,23 @@ const products = [
   {id:7,cat:'top',name:'EZwear Blue Watercolor Floral Print Cami Tank Top',brand:'SHEIN EZwear',
     variants:[{color:'Watercolor',price:16000,images:['IG1.jpeg','IG2.jpeg','IG3.jpeg'],sizes:['S','M','L']}]},
   {id:8,cat:'top',name:'Essnce Denim Effect Knitted Strapless Top',brand:'SHEIN Essnce',
-    variants:[{color:'Denim Blue',price:16000,images:['image1.jpeg','image2.jpeg','image3.jpeg'],sizes:['S','M','L']}]}
+    variants:[{color:'Denim Blue',price:16000,images:['image1.jpeg','image2.jpeg','image3.jpeg'],sizes:['S','M','L']}]},
+  {id:9,cat:'top',name:'INAWLY Vacation Floral Print Tube Top',brand:'INAWLY',
+    variants:[
+      {color:'White', price:22000,images:['S1.png','S2.png','S3.png','S4.png'],sizes:['XS','S','M','L','XL']},
+      {color:'Red',   price:23000,images:['S5.png'],sizes:['XS','S','M','L','XL']},
+      {color:'Purple',price:22000,images:['S6.png'],sizes:['XS','S','M','L','XL']},
+      {color:'Blue',  price:23000,images:['S7.png'],sizes:['XS','S','M','L','XL']},
+      {color:'Black', price:22000,images:['S8.png'],sizes:['XS','M','XL']}
+    ]},
+  {id:10,cat:'top',name:'Sweetra Elegant Floral Print Asymmetrical Neck Ruched Top',brand:'Sweetra',
+    variants:[
+      {color:'Apricot',price:27000,images:['S9.png','S10.png'],sizes:['XS','S','M','L','XL']},
+      {color:'Black',  price:29000,images:['S11.png'],sizes:['S','M','L','XL']},
+      {color:'Blue',   price:28000,images:['S12.png'],sizes:['XS','S','M','L','XL']},
+      {color:'Brown',  price:29000,images:['S13.png'],sizes:['XS','S','M','L','XL']},
+      {color:'Red',    price:27000,images:['S14.png'],sizes:['XS','S','M','L','XL']}
+    ]}
 ];
 
 // STATE
