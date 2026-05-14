@@ -419,7 +419,7 @@ footer a:hover{color:var(--gold)}
   </div>
 </header>
 
-<div class="promo-bar">✦ Livraison GRATUITE dès 160 000 Ar ✦ Sinon 100 000 Ar ✦ Paiement à la livraison ✦</div>
+<div class="promo-bar">✦ Livraison GRATUITE dès 160 000 Ar ✦ Livraison à domicile : Tana & Farafangana ✦ Frais livreur : 2 000 - 5 000 Ar ✦</div>
 
 <div class="hero">
   <div class="hero-eyebrow">Nouvelle Saison</div>
@@ -533,16 +533,27 @@ footer a:hover{color:var(--gold)}
     <div class="order-summary" id="orderSummary"></div>
     <input type="text" id="c-name" class="input-field" placeholder="👤 Nom complet">
     <input type="tel" id="c-phone" class="input-field" placeholder="📞 Numéro de téléphone">
-    <input type="text" id="c-addr" class="input-field" placeholder="🏠 Quartier / Rue">
-    <select id="c-city" class="input-field">
-      <option value="">📍 Choisir la ville</option>
-      <option>Antananarivo</option><option>Toamasina</option><option>Antsirabe</option>
-      <option>Fianarantsoa</option><option>Mahajanga</option><option>Toliara</option>
-      <option>Antsiranana</option><option>Nosy Be</option><option>Autre ville</option>
+    <select id="c-province" class="input-field" onchange="updateCities()">
+      <option value="">📍 Choisir la province</option>
+      <option value="Antananarivo">Antananarivo</option>
+      <option value="Antsiranana">Antsiranana</option>
+      <option value="Fianarantsoa">Fianarantsoa</option>
+      <option value="Mahajanga">Mahajanga</option>
+      <option value="Toamasina">Toamasina</option>
+      <option value="Toliara">Toliara</option>
     </select>
-    <div class="delivery-info" id="deliveryInfo">
+    <select id="c-city" class="input-field" style="display:none" onchange="updateDeliveryUI()">
+      <option value="">🏙 Choisir la ville</option>
+    </select>
+    <select id="c-delivery-type" class="input-field" style="display:none" onchange="updateDeliveryUI()">
+      <option value="">🚚 Type de livraison</option>
+      <option value="domicile">🏠 Livraison à domicile</option>
+      <option value="standard">📦 Livraison standard (point relais)</option>
+    </select>
+    <input type="text" id="c-addr" class="input-field" style="display:none" placeholder="🏠 Adresse complète / Quartier">
+    <div class="delivery-info" id="deliveryInfo" style="display:none">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-      <span id="deliveryText">Livraison dans toute Madagascar</span>
+      <span id="deliveryText"></span>
     </div>
     <div class="promo-row">
       <input type="text" id="c-promo" class="input-field" placeholder="🎟 Code promo">
@@ -862,16 +873,77 @@ function applyPromo(){
   refreshCartTotal();
 }
 
+const PROVINCES = {
+  'Antananarivo': ['Ambatolampy','Ambohidratrimo','Analamanga','Andoharanofotsy','Antananarivo','Antsirabe'],
+  'Antsiranana':  ['Ambanja','Antsiranana','Nosy Be','Sambava'],
+  'Fianarantsoa': ['Ambositra','Fandriana','Farafangana','Ihosy','Manakara','Mananjary'],
+  'Mahajanga':    ['Antsohihy','Maevantanana','Mahajanga'],
+  'Toamasina':    ['Ambatondrazaka','Moramanga','Toamasina'],
+  'Toliara':      ['Morondava','Tolagnaro (Fort-Dauphin)','Tuléar']
+};
+// Cities with domicile delivery: Antananarivo (province) cities + Farafangana
+const DOMICILE_CITIES = ['Ambatolampy','Ambohidratrimo','Analamanga','Andoharanofotsy','Antananarivo','Antsirabe','Farafangana'];
+
+function updateCities(){
+  const province = document.getElementById('c-province').value;
+  const cityEl = document.getElementById('c-city');
+  const typeEl = document.getElementById('c-delivery-type');
+  const addrEl = document.getElementById('c-addr');
+  const di = document.getElementById('deliveryInfo');
+  // Reset downstream
+  typeEl.style.display='none'; addrEl.style.display='none'; di.style.display='none';
+  typeEl.value=''; addrEl.value='';
+  if(!province){ cityEl.style.display='none'; cityEl.value=''; return; }
+  const cities = PROVINCES[province] || [];
+  cityEl.innerHTML = `<option value="">🏙 Choisir la ville</option>` + cities.map(c=>`<option value="${c}">${c}</option>`).join('');
+  cityEl.style.display='block';
+  cityEl.value='';
+}
+
+function updateDeliveryUI(){
+  const city = document.getElementById('c-city').value;
+  const typeEl = document.getElementById('c-delivery-type');
+  const addrEl = document.getElementById('c-addr');
+  const di = document.getElementById('deliveryInfo');
+  const dtxt = document.getElementById('deliveryText');
+
+  if(!city){ typeEl.style.display='none'; addrEl.style.display='none'; di.style.display='none'; return; }
+
+  const hasDomicile = DOMICILE_CITIES.includes(city);
+  typeEl.innerHTML = hasDomicile
+    ? `<option value="">🚚 Type de livraison</option><option value="domicile">🏠 Livraison à domicile</option><option value="standard">📦 Livraison standard (point relais)</option>`
+    : `<option value="">🚚 Type de livraison</option><option value="standard">📦 Livraison standard (point relais)</option>`;
+  typeEl.style.display = 'block';
+  addrEl.style.display = 'none';
+  di.style.display = 'none';
+
+  const type = typeEl.value;
+  if(type){
+    addrEl.style.display = 'block';
+    addrEl.placeholder = type === 'domicile' ? '🏠 Adresse complète / Quartier' : '📦 Point relais / Quartier';
+    const raw = cart.reduce((s,i)=>s+i.price,0);
+    const subtotal = Math.round(raw*(1-promoDiscount/100));
+    const delivery = subtotal >= 160000 ? 0 : 100000;
+    di.style.display = 'flex';
+    if(delivery === 0){
+      dtxt.textContent = '🎉 Livraison GRATUITE !';
+      di.style.background='#F0FFF6'; di.style.borderColor='#A8E6C1'; di.style.color='#1a7a40';
+    } else {
+      dtxt.textContent = type === 'domicile'
+        ? 'Livraison à domicile : 100 000 Ar (gratuite dès 160 000 Ar) + frais livreur 2 000–5 000 Ar à remettre au livreur'
+        : 'Livraison standard : 100 000 Ar (gratuite dès 160 000 Ar)';
+      di.style.background='#FFF8E1'; di.style.borderColor='#FFD54F'; di.style.color='#8a6200';
+    }
+  }
+}
+
 function refreshCartTotal(){
   const raw=cart.reduce((s,i)=>s+i.price,0);
   const subtotal=Math.round(raw*(1-promoDiscount/100));
   const delivery=subtotal>=160000?0:100000;
   const total=subtotal+delivery;
-  const dtxt=document.getElementById('deliveryText');
-  if(dtxt) dtxt.textContent=delivery===0?'🎉 Livraison GRATUITE !':'Livraison : 100 000 Ar (gratuite dès 160 000 Ar)';
-  const di=document.getElementById('deliveryInfo');
-  if(di) di.style.background=delivery===0?'#F0FFF6':'#FFF8E1',di.style.borderColor=delivery===0?'#A8E6C1':'#FFD54F',di.style.color=delivery===0?'#1a7a40':'#8a6200';
   document.getElementById('cartTotal').textContent=total.toLocaleString()+' Ar';
+  updateDeliveryUI();
   const btn=document.getElementById('btnWA');
   const msg=document.getElementById('minMsg');
   msg.innerHTML=''; btn.disabled=false;
@@ -927,12 +999,17 @@ function removeItem(i){
 function sendWA(){
   const n=document.getElementById('c-name').value.trim();
   const p=document.getElementById('c-phone').value.trim();
-  const a=document.getElementById('c-addr').value.trim();
+  const province=document.getElementById('c-province').value;
   const city=document.getElementById('c-city').value;
-  if(!n||!p||!a||!city){ showToast('⚠️ Remplissez tous les champs'); return; }
+  const dtype=document.getElementById('c-delivery-type').value;
+  const a=document.getElementById('c-addr').value.trim();
+  if(!n||!p||!province||!city){ showToast('⚠️ Remplissez tous les champs'); return; }
+  if(!dtype){ showToast('⚠️ Choisissez un type de livraison'); return; }
+  if(!a){ showToast('⚠️ Entrez votre adresse'); return; }
   const raw=cart.reduce((s,i)=>s+i.price,0);
   const total=Math.round(raw*(1-promoDiscount/100));
-  let msg=`✨ *COMMANDE MADA GLAM* ✨\n\n👤 *Client :* ${n}\n📞 *Tél :* ${p}\n🏠 *Adresse :* ${a}, ${city}\n\n📦 *Articles :*\n`;
+  const dtypeLabel=dtype==='domicile'?'🏠 Livraison à domicile':'📦 Livraison standard (point relais)';
+  let msg=`✨ *COMMANDE MADA GLAM* ✨\n\n👤 *Client :* ${n}\n📞 *Tél :* ${p}\n📍 *Ville :* ${city} (${province})\n${dtypeLabel}\n🏠 *Adresse :* ${a}\n\n📦 *Articles :*\n`;
   cart.forEach(i=>msg+=`‣ ${i.prodName}\n   ${i.color} / T.${i.size} — ${i.price.toLocaleString()} Ar\n`);
   const delivery=total>=160000?0:100000;
   const grandTotal=total+delivery;
