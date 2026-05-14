@@ -136,6 +136,8 @@ header{
 .card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:.5s ease;display:block}
 .card:hover .card-img img{transform:scale(1.04)}
 .card:active .card-img img{transform:scale(1.05)}
+
+/* card shimmer on hover */
 .card-img::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(180deg,transparent 50%,rgba(13,10,14,.35) 100%);
@@ -318,34 +320,6 @@ header{
 .rm-btn:hover{color:var(--rose)}
 .min-alert{background:var(--rose-pale);border:1.5px dashed var(--rose-light);color:var(--rose);padding:12px;border-radius:10px;font-size:11px;font-weight:600;text-align:center;margin-bottom:12px;line-height:1.6}
 
-/* ── DELIVERY OPTIONS ── */
-.delivery-section{margin-bottom:14px}
-.delivery-section-label{font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#BBB;display:block;margin-bottom:10px}
-.delivery-options{display:flex;flex-direction:column;gap:8px}
-.delivery-opt{
-  border:1.5px solid #EDE5E9;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.2s;
-  display:flex;align-items:flex-start;gap:10px;background:white;
-}
-.delivery-opt:hover{border-color:#C8A0B0}
-.delivery-opt.active{border-color:var(--rose);background:var(--rose-pale)}
-.delivery-opt.disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
-.delivery-opt-radio{
-  width:16px;height:16px;border-radius:50%;border:2px solid #DDD;
-  margin-top:1px;flex-shrink:0;transition:.2s;
-  display:flex;align-items:center;justify-content:center;
-}
-.delivery-opt.active .delivery-opt-radio{border-color:var(--rose);background:var(--rose)}
-.delivery-opt.active .delivery-opt-radio::after{content:'';width:5px;height:5px;border-radius:50%;background:white}
-.delivery-opt-body{flex:1}
-.delivery-opt-title{font-size:12px;font-weight:700;color:var(--dark);margin-bottom:2px}
-.delivery-opt-desc{font-size:10px;color:#999;line-height:1.5}
-.delivery-opt-price{font-size:11px;font-weight:700;color:var(--rose);margin-top:3px}
-.delivery-note{
-  background:#FFF8EE;border:1.5px solid #F5DFA0;border-radius:10px;
-  padding:11px 13px;margin-top:8px;font-size:11px;color:#8a6200;font-weight:600;
-  display:flex;align-items:center;gap:7px;line-height:1.5;
-}
-
 /* ── ORDER SUMMARY ── */
 .order-summary{background:var(--cream2);border-radius:12px;padding:14px;margin-bottom:14px;border:1px solid rgba(0,0,0,.04)}
 .os-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:#BBB;font-weight:700;margin-bottom:10px}
@@ -356,6 +330,9 @@ header{
 .os-price{font-size:11px;font-weight:700;color:var(--dark)}
 .total-row{display:flex;justify-content:space-between;align-items:center;padding:16px 0;border-top:1px solid #F0E8ED;font-size:19px;font-weight:700}
 .total-val{color:var(--dark)}
+
+/* ── DELIVERY ── */
+.delivery-info{background:#F0FFF6;border:1.5px solid #A8E6C1;border-radius:10px;padding:11px 13px;margin-bottom:13px;font-size:11px;color:#1a7a40;font-weight:600;display:flex;align-items:center;gap:7px}
 
 /* ── PROMO ── */
 .promo-row{display:flex;gap:7px;margin-bottom:8px}
@@ -390,6 +367,15 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
 footer a:hover{color:var(--gold)}
 
 /* ── BACK TO TOP ── */
+.back-btn{
+  display:inline-flex;align-items:center;gap:6px;
+  background:none;border:none;color:#999;font-family:'DM Sans',sans-serif;
+  font-size:12px;font-weight:600;cursor:pointer;padding:0 0 14px;
+  letter-spacing:.3px;transition:.15s;
+}
+.back-btn:hover{color:var(--dark)}
+.back-btn svg{stroke:#999;transition:.15s}
+.back-btn:hover svg{stroke:var(--dark)}
 .back-top{
   position:fixed;bottom:22px;right:18px;width:42px;height:42px;border-radius:12px;
   background:var(--dark);border:1px solid rgba(196,151,58,.3);color:var(--gold);
@@ -433,7 +419,7 @@ footer a:hover{color:var(--gold)}
   </div>
 </header>
 
-<div class="promo-bar">✦ Commande min. 160 000 Ar ✦ Livraison partout à Madagascar ✦</div>
+<div class="promo-bar">✦ Livraison GRATUITE dès 160 000 Ar ✦ Sinon 10 000 Ar ✦ Paiement à la livraison ✦</div>
 
 <div class="hero">
   <div class="hero-eyebrow">Nouvelle Saison</div>
@@ -472,7 +458,7 @@ footer a:hover{color:var(--gold)}
   <strong>MADA GLAM</strong><br><br>
   Mode exclusive à Madagascar<br><br>
   Commandes &amp; infos via <a href="https://wa.me/33767245066">WhatsApp</a><br><br>
-  ©️ 2026 MADA GLAM
+  © 2026 MADA GLAM
 </footer>
 
 <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
@@ -484,6 +470,10 @@ footer a:hover{color:var(--gold)}
 <!-- WISHLIST PANEL -->
 <div id="wishPanel">
   <div class="modal-handle"></div>
+  <button class="back-btn" onclick="closeAll()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </button>
   <div class="wish-title">Mes Favoris ❤</div>
   <div id="wishList"></div>
 </div>
@@ -491,6 +481,10 @@ footer a:hover{color:var(--gold)}
 <!-- MODAL PRODUIT -->
 <div class="modal" id="modalProduct">
   <div class="modal-handle"></div>
+  <button class="back-btn" onclick="closeAll()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </button>
   <div class="carousel-wrap" id="carouselWrap">
     <div class="carousel-track" id="carouselTrack"></div>
     <button class="carousel-btn prev" onclick="carouselMove(-1)">
@@ -528,71 +522,35 @@ footer a:hover{color:var(--gold)}
 <!-- MODAL PANIER -->
 <div class="modal" id="modalCart">
   <div class="modal-handle"></div>
+  <button class="back-btn" onclick="closeAll()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    Retour
+  </button>
   <div class="cart-title">Mon Panier 🛍</div>
   <div id="minMsg"></div>
   <div id="cartList"></div>
   <div id="cartDetails" style="display:none">
     <div class="order-summary" id="orderSummary"></div>
-
     <input type="text" id="c-name" class="input-field" placeholder="👤 Nom complet">
     <input type="tel" id="c-phone" class="input-field" placeholder="📞 Numéro de téléphone">
     <input type="text" id="c-addr" class="input-field" placeholder="🏠 Quartier / Rue">
-    <select id="c-city" class="input-field" onchange="onCityChange()">
+    <select id="c-city" class="input-field">
       <option value="">📍 Choisir la ville</option>
-      <option>Antananarivo</option><option>Farafangana</option><option>Toamasina</option>
-      <option>Antsirabe</option><option>Fianarantsoa</option><option>Mahajanga</option>
-      <option>Toliara</option><option>Antsiranana</option><option>Nosy Be</option>
-      <option>Autre ville</option>
+      <option>Antananarivo</option><option>Toamasina</option><option>Antsirabe</option>
+      <option>Fianarantsoa</option><option>Mahajanga</option><option>Toliara</option>
+      <option>Antsiranana</option><option>Nosy Be</option><option>Autre ville</option>
     </select>
-
-    <!-- LIVRAISON -->
-    <div class="delivery-section">
-      <span class="delivery-section-label">Mode de livraison</span>
-      <div class="delivery-options" id="deliveryOptions">
-
-        <!-- Option 1 : Standard -->
-        <div class="delivery-opt active" id="opt-standard" onclick="selectDelivery('standard')">
-          <div class="delivery-opt-radio"></div>
-          <div class="delivery-opt-body">
-            <div class="delivery-opt-title">📦 Livraison standard</div>
-            <div class="delivery-opt-desc">Disponible partout à Madagascar — délai communiqué par message</div> 
-          </div>
-        </div>
-
-        <!-- Option 2 : Domicile Tana -->
-        <div class="delivery-opt disabled" id="opt-tana" onclick="selectDelivery('tana')">
-          <div class="delivery-opt-radio"></div>
-          <div class="delivery-opt-body">
-            <div class="delivery-opt-title">🏠 Livraison à domicile — Antananarivo</div>
-            <div class="delivery-opt-desc">Livraison directement chez vous à Tana</div>
-            <div class="delivery-opt-price">2 000 – 5 000 Ar (à payer au livreur)</div>
-          </div>
-        </div>
-
-        <!-- Option 3 : Domicile Farafangana -->
-        <div class="delivery-opt disabled" id="opt-fara" onclick="selectDelivery('fara')">
-          <div class="delivery-opt-radio"></div>
-          <div class="delivery-opt-body">
-            <div class="delivery-opt-title">🏠 Livraison à domicile — Farafangana</div>
-            <div class="delivery-opt-desc">Livraison directement chez vous à Farafangana</div>
-            <div class="delivery-opt-price">2 000 – 5 000 Ar (à payer au livreur)</div>
-          </div>
-        </div>
-
-      </div>
-      <div class="delivery-note" id="deliveryNote">
-        💳 Le paiement de la livraison se fait directement au livreur à la réception
-      </div>
+    <div class="delivery-info" id="deliveryInfo">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      <span id="deliveryText">Livraison dans toute Madagascar</span>
     </div>
-    <!-- FIN LIVRAISON -->
-
     <div class="promo-row">
       <input type="text" id="c-promo" class="input-field" placeholder="🎟 Code promo">
       <button class="promo-apply" onclick="applyPromo()">Appliquer</button>
     </div>
     <div id="promoMsg" class="promo-msg"></div>
     <div class="total-row">
-      <span>Total articles</span>
+      <span>Total</span>
       <span class="total-val" id="cartTotal">0 Ar</span>
     </div>
     <button class="btn-wa" id="btnWA" onclick="sendWA()">
@@ -619,39 +577,40 @@ const swatchColors = {
   'Red':'#DC2626','Dusty Pink':'#D4A0A0','Pink':'#F9A8D4',
 };
 
+
 const products = [
   {id:1,cat:'dress',name:'Sweetra Knit Patchwork V-Neck Ruffle Backless Mini Dress',brand:'Sweetra',
     variants:[
-      {color:'Apricot',price:55000,images:['apricot1.jpeg','apricot2.jpeg'],sizes:['36','38','40']},
-      {color:'Black',price:50000,images:['black1.jpeg'],sizes:['36','38']},
-      {color:'Navy Blue',price:60000,images:['navy1.jpeg'],sizes:['36','38']}
+      {color:'Apricot',price:52000,images:['apricot1.jpeg','apricot2.jpeg'],sizes:['36','38','40']},
+      {color:'Black',price:48000,images:['black1.jpeg'],sizes:['36','38']},
+      {color:'Navy Blue',price:57000,images:['navy1.jpeg'],sizes:['36','38']}
     ]},
   {id:2,cat:'dress',name:'Aloruh Champagne Satin Cross Back Twist Backless Dress',brand:'Aloruh',
-    variants:[{color:'Champagne',price:55000,images:['champ1.jpeg','champ2.jpeg','champ3.jpeg'],sizes:['36','38','40']}]},
+    variants:[{color:'Champagne',price:52000,images:['champ1.jpeg','champ2.jpeg','champ3.jpeg'],sizes:['36','38','40']}]},
   {id:3,cat:'dress',name:'Rafferiza One-Shoulder Metal Buckle Bodycon Mesh Dress',brand:'Rafferiza',
     variants:[
-      {color:'Blue',price:45000,oldPrice:65000,images:['blue1.jpeg','blue2.jpeg'],sizes:['36','38']},
-      {color:'Coffee',price:50000,oldPrice:70000,images:['coffee1.jpeg'],sizes:['36','38']}
+      {color:'Blue',price:43000,oldPrice:62000,images:['blue1.jpeg','blue2.jpeg'],sizes:['36','38']},
+      {color:'Coffee',price:48000,oldPrice:66000,images:['coffee1.jpeg'],sizes:['36','38']}
     ]},
   {id:4,cat:'dress',name:'BamGleam Strapless Color Block Floral Print Maxi Dress',brand:'BamGleam',
     variants:[
-      {color:'Apricot',price:45000,images:['A1.jpeg','A2.jpeg'],sizes:['S','M','L']},
-      {color:'Pink',price:45000,images:['P.jpeg'],sizes:['S','M']},
-      {color:'Blue',price:46000,images:['B.jpeg'],sizes:['S','M']},
-      {color:'Hot Pink',price:46000,images:['H.jpeg'],sizes:['S','M']},
-      {color:'Multicolor',price:46000,images:['M5.jpeg'],sizes:['S','M']}
+      {color:'Apricot',price:43000,images:['A1.jpeg','A2.jpeg'],sizes:['S','M','L']},
+      {color:'Pink',price:43000,images:['P.jpeg'],sizes:['S','M']},
+      {color:'Blue',price:44000,images:['B.jpeg'],sizes:['S','M']},
+      {color:'Hot Pink',price:44000,images:['H.jpeg'],sizes:['S','M']},
+      {color:'Multicolor',price:44000,images:['M5.jpeg'],sizes:['S','M']}
     ]},
   {id:5,cat:'dress',name:'Beach Vacation Contrast Floral Tube Top Bodycon Long Dress',brand:'SHEIN',
-    variants:[{color:'Sky Floral',price:45000,images:['B1.jpeg','B2.jpeg'],sizes:['XS','S','M']}]},
+    variants:[{color:'Sky Floral',price:43000,images:['B1.jpeg','B2.jpeg'],sizes:['XS','S','M']}]},
   {id:6,cat:'top',name:'EZwear Casual Floral Print Halter Tie Neck Blouse',brand:'SHEIN EZwear',
     variants:[
-      {color:'Multicolor (1)',price:21000,images:['M1.jpeg','M2.jpeg'],sizes:['S','M','L']},
-      {color:'Multicolor (2)',price:22000,images:['M3.jpeg'],sizes:['S','M']}
+      {color:'Multicolor (1)',price:20000,images:['M1.jpeg','M2.jpeg'],sizes:['S','M','L']},
+      {color:'Multicolor (2)',price:21000,images:['M3.jpeg'],sizes:['S','M']}
     ]},
   {id:7,cat:'top',name:'EZwear Blue Watercolor Floral Print Cami Tank Top',brand:'SHEIN EZwear',
-    variants:[{color:'Watercolor',price:17000,images:['IG1.jpeg','IG2.jpeg','IG3.jpeg'],sizes:['S','M','L']}]},
+    variants:[{color:'Watercolor',price:16000,images:['IG1.jpeg','IG2.jpeg','IG3.jpeg'],sizes:['S','M','L']}]},
   {id:8,cat:'top',name:'Essnce Denim Effect Knitted Strapless Top',brand:'SHEIN Essnce',
-    variants:[{color:'Denim Blue',price:17000,images:['image1.jpeg','image2.jpeg','image3.jpeg'],sizes:['S','M','L']}]}
+    variants:[{color:'Denim Blue',price:16000,images:['image1.jpeg','image2.jpeg','image3.jpeg'],sizes:['S','M','L']}]}
 ];
 
 // STATE
@@ -660,7 +619,6 @@ let wishlist = JSON.parse(localStorage.getItem('mg_wish')||'[]');
 let curProd=null,curVar=null,curSize=null,carouselIdx=0;
 let activeFilter='all',activeSort='default',searchQ='';
 let promoDiscount=0;
-let selectedDelivery='standard'; // 'standard' | 'tana' | 'fara'
 
 function saveCart(){ localStorage.setItem('mg_cart',JSON.stringify(cart)); }
 function saveWish(){ localStorage.setItem('mg_wish',JSON.stringify(wishlist)); }
@@ -675,51 +633,6 @@ function showToast(msg){
   t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2300);
 }
-
-// ── DELIVERY LOGIC ──────────────────────────────────────────
-function onCityChange(){
-  const city=document.getElementById('c-city').value;
-  const isTana=city==='Antananarivo';
-  const isFara=city==='Farafangana';
-
-  // Reset delivery to standard when city changes
-  selectedDelivery='standard';
-
-  const optTana=document.getElementById('opt-tana');
-  const optFara=document.getElementById('opt-fara');
-
-  optTana.classList.toggle('disabled',!isTana);
-  optFara.classList.toggle('disabled',!isFara);
-
-  // If current selection is a domicile option but city no longer matches, revert to standard
-  if(selectedDelivery==='tana'&&!isTana) selectedDelivery='standard';
-  if(selectedDelivery==='fara'&&!isFara) selectedDelivery='standard';
-
-  updateDeliveryUI();
-}
-
-function selectDelivery(type){
-  const city=document.getElementById('c-city').value;
-  if(type==='tana'&&city!=='Antananarivo'){ showToast('⚠️ Livraison domicile Tana uniquement'); return; }
-  if(type==='fara'&&city!=='Farafangana'){ showToast('⚠️ Livraison domicile Farafangana uniquement'); return; }
-  selectedDelivery=type;
-  updateDeliveryUI();
-}
-
-function updateDeliveryUI(){
-  document.querySelectorAll('.delivery-opt').forEach(el=>el.classList.remove('active'));
-  const map={'standard':'opt-standard','tana':'opt-tana','fara':'opt-fara'};
-  const el=document.getElementById(map[selectedDelivery]);
-  if(el&&!el.classList.contains('disabled')) el.classList.add('active');
-  else { selectedDelivery='standard'; document.getElementById('opt-standard').classList.add('active'); }
-}
-
-function deliveryLabel(){
-  if(selectedDelivery==='tana') return 'Livraison à domicile — Antananarivo (2 000–5 000 Ar à payer au livreur)';
-  if(selectedDelivery==='fara') return 'Livraison à domicile — Farafangana (2 000–5 000 Ar à payer au livreur)';
-  return 'Livraison standard — toute Madagascar (frais à payer au livreur)';
-}
-// ─────────────────────────────────────────────────────────────
 
 // FILTER / SORT / SEARCH
 function setFilter(f,btn){
@@ -839,6 +752,7 @@ function selectVar(idx){
   const pp=document.getElementById('p-price'); pp.textContent=curVar.price.toLocaleString()+' Ar'; pp.className=curVar.oldPrice?'p-price p-price-sale':'p-price';
   document.getElementById('p-old').textContent=curVar.oldPrice?curVar.oldPrice.toLocaleString()+' Ar':'';
 
+
   document.getElementById('p-colors').innerHTML=curProd.variants.map((v,i)=>`
     <div class="color-swatch ${v===curVar?'active':''}" onclick="selectVar(${i})">
       <div class="swatch-dot" style="${colorStyle(v.color)}"></div>
@@ -951,12 +865,18 @@ function applyPromo(){
 
 function refreshCartTotal(){
   const raw=cart.reduce((s,i)=>s+i.price,0);
-  const total=Math.round(raw*(1-promoDiscount/100));
+  const subtotal=Math.round(raw*(1-promoDiscount/100));
+  const delivery=subtotal>=160000?0:10000;
+  const total=subtotal+delivery;
+  const dtxt=document.getElementById('deliveryText');
+  if(dtxt) dtxt.textContent=delivery===0?'🎉 Livraison GRATUITE !':'Livraison : 10 000 Ar (gratuite dès 160 000 Ar)';
+  const di=document.getElementById('deliveryInfo');
+  if(di) di.style.background=delivery===0?'#F0FFF6':'#FFF8E1',di.style.borderColor=delivery===0?'#A8E6C1':'#FFD54F',di.style.color=delivery===0?'#1a7a40':'#8a6200';
   document.getElementById('cartTotal').textContent=total.toLocaleString()+' Ar';
   const btn=document.getElementById('btnWA');
   const msg=document.getElementById('minMsg');
-  if(total<MIN){
-    msg.innerHTML=`<div class="min-alert">⚠️ Il manque <strong>${(MIN-total).toLocaleString()} Ar</strong> pour valider votre commande</div>`;
+  if(subtotal<MIN){
+    msg.innerHTML=`<div class="min-alert">⚠️ Il manque <strong>${(MIN-subtotal).toLocaleString()} Ar</strong> pour valider votre commande</div>`;
     btn.disabled=true;
   } else {
     msg.innerHTML=''; btn.disabled=false;
@@ -966,10 +886,8 @@ function refreshCartTotal(){
 // CART
 function openCart(){
   promoDiscount=0;
-  selectedDelivery='standard';
   document.getElementById('promoMsg').textContent='';
   document.getElementById('c-promo').value='';
-
   const list=document.getElementById('cartList');
   const details=document.getElementById('cartDetails');
   if(!cart.length){
@@ -998,19 +916,12 @@ function openCart(){
           <div class="os-price">${item.price.toLocaleString()} Ar</div>
         </div>`).join('')}`;
     details.style.display='block';
-
-    // Reset delivery UI
-    updateDeliveryUI();
-    // Reset city-dependent options
-    document.getElementById('opt-tana').classList.add('disabled');
-    document.getElementById('opt-fara').classList.add('disabled');
-    document.getElementById('c-city').value='';
-
     refreshCartTotal();
   }
   document.getElementById('overlay').style.display='block';
   document.getElementById('modalCart').classList.add('open');
 }
+
 
 function removeItem(i){
   cart.splice(i,1); saveCart();
@@ -1029,10 +940,11 @@ function sendWA(){
   const total=Math.round(raw*(1-promoDiscount/100));
   let msg=`✨ *COMMANDE MADA GLAM* ✨\n\n👤 *Client :* ${n}\n📞 *Tél :* ${p}\n🏠 *Adresse :* ${a}, ${city}\n\n📦 *Articles :*\n`;
   cart.forEach(i=>msg+=`‣ ${i.prodName}\n   ${i.color} / T.${i.size} — ${i.price.toLocaleString()} Ar\n`);
+  const delivery=total>=160000?0:10000;
+  const grandTotal=total+delivery;
   if(promoDiscount) msg+=`\n🎟 Code promo −${promoDiscount}%`;
-  msg+=`\n\n💰 *TOTAL articles : ${total.toLocaleString()} Ar*`;
-  msg+=`\n🚚 *Livraison :* ${deliveryLabel()}`;
-  msg+=`\n💳 Paiement livraison au livreur à la réception`;
+  msg+=`\n🚚 Livraison : ${delivery===0?'GRATUITE':'10 000 Ar'}`;
+  msg+=`\n\n💰 *TOTAL : ${grandTotal.toLocaleString()} Ar*\n📅 Délai de livraison communiqué par message`;
   window.open(`https://wa.me/33767245066?text=${encodeURIComponent(msg)}`);
 }
 
@@ -1051,6 +963,7 @@ function closeAll(){
   document.getElementById('wishPanel').classList.remove('open');
 }
 
+// SWIPE
 // BACK TO TOP
 window.addEventListener('scroll',()=>{
   const bt=document.getElementById('backTop');
